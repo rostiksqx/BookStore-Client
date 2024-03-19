@@ -23,7 +23,7 @@ export default function RootLayout({
               theme="dark"
               mode="horizontal"
               items={items}
-              style={{ flex: 1, minWidth: 0 }}
+              style={{ display: "flex", justifyContent: "center", minWidth: 0 }}
             />
           </Header>
           <Content style={{ padding: "0 48px" }}>{children}</Content>
