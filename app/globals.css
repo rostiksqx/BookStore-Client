@@ -27,8 +27,8 @@
 
 .book_modal {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .card_title {

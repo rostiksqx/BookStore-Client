@@ -1,8 +1,8 @@
 import { BookRequest } from "@/app/services/books";
-import Modal from "antd/es/modal/Modal";
 import Input from "antd/es/input/Input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextArea from "antd/es/input/TextArea";
+import Modal from "antd/lib/modal/Modal";
 
 interface Props {
   mode: Mode;
@@ -18,7 +18,7 @@ export enum Mode {
   Update,
 }
 
-export const CreateUpdateBooks = ({
+export const CreateUpdateBook = ({
   mode,
   values,
   isModalOpen,
@@ -29,6 +29,12 @@ export const CreateUpdateBooks = ({
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [price, setPrice] = useState<number>(1);
+
+  useEffect(() => {
+    setTitle(values.title);
+    setDescription(values.description);
+    setPrice(values.price);
+  }, [values]);
 
   const handleOnOk = async () => {
     const bookRequest = { title, description, price };
@@ -42,9 +48,9 @@ export const CreateUpdateBooks = ({
     <Modal
       title={mode === Mode.Create ? "Create Book" : "Update Book"}
       open={isModalOpen}
-      cancelText="Cancel"
       onOk={handleOnOk}
       onCancel={handleCancel}
+      cancelText={"Cancel"}
     >
       <div className="book_modal">
         <Input
