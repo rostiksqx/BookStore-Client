@@ -82,14 +82,16 @@ export default function BooksPage() {
 
   return (
     <div>
-      <Button
-        type="primary"
-        style={{ margin: "30px" }}
-        size="large"
-        onClick={openModal}
-      >
-        Add Book
-      </Button>
+      {loading ? null : (
+        <Button
+          type="primary"
+          style={{ margin: "30px" }}
+          size="large"
+          onClick={openModal}
+        >
+          Add Book
+        </Button>
+      )}
 
       <CreateUpdateBook
         mode={mode}
