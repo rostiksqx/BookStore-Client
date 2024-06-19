@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "antd/es/button/button";
-import { Books } from "@/app/components/Books";
+import { Books } from "@/components/Books";
 import { useEffect, useState } from "react";
 import {
   BookRequest,
@@ -9,9 +9,9 @@ import {
   deleteBook,
   getAllBooks,
   updateBook,
-} from "@/app/services/books";
+} from "@/app/api/books";
 import Title from "antd/es/typography/Title";
-import { CreateUpdateBook, Mode } from "@/app/components/CreateUpdate";
+import { CreateUpdateBook, Mode } from "@/components/CreateUpdate";
 
 export default function BooksPage() {
   const defaultValues = {

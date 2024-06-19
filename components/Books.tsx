@@ -1,4 +1,4 @@
-import { CardTitle } from "@/app/components/CardTitle";
+import { CardTitle } from "@/components/CardTitle";
 import Card from "antd/es/card/Card";
 import Button from "antd/es/button/button";
 

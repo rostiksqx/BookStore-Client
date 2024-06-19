@@ -1,4 +1,4 @@
-import { BookRequest } from "@/app/services/books";
+import { BookRequest } from "@/app/api/books";
 import Input from "antd/es/input/Input";
 import { useEffect, useState } from "react";
 import TextArea from "antd/es/input/TextArea";

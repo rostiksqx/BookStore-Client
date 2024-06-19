@@ -1,8 +1,7 @@
 import "./globals.css";
 
-import Layout, { Content, Footer, Header } from "antd/es/layout/layout";
-import { Menu } from "antd";
 import Link from "next/link";
+import Header from "../components/Header";
 
 const items = [
   { key: "home", label: <Link href="/">Home</Link> },
@@ -17,20 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Layout style={{ minHeight: "100vh" }}>
-          <Header>
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              items={items}
-              style={{ display: "flex", justifyContent: "center", minWidth: 0 }}
-            />
-          </Header>
-          <Content style={{ padding: "0 48px" }}>{children}</Content>
-          <Footer style={{ textAlign: "center" }}>
-            Book Store &copy; 2024
-          </Footer>
-        </Layout>
+        <Header />
+        <main>{children}</main>
       </body>
     </html>
   );
