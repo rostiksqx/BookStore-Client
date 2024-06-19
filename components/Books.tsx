@@ -1,6 +1,5 @@
-import { CardTitle } from "@/components/CardTitle";
-import Card from "antd/es/card/Card";
-import Button from "antd/es/button/button";
+import { Button } from "./ui/button";
+import { Card } from "./ui/card";
 
 interface Props {
   books: Book[];
@@ -14,8 +13,7 @@ export const Books = ({ books, handleDelete, handleOpen }: Props) => {
       {books.map((book: Book) => (
         <Card
           key={book.id}
-          title={<CardTitle title={book.title} price={book.price} />}
-          bordered={false}
+          title={book.title}
         >
           <p>{book.description}</p>
           <div className="card_buttons">
@@ -24,7 +22,6 @@ export const Books = ({ books, handleDelete, handleOpen }: Props) => {
             </Button>
             <Button
               onClick={() => handleDelete(book.id)}
-              danger
               style={{ flex: 1 }}
             >
               Delete

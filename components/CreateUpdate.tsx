@@ -1,8 +1,8 @@
 import { BookRequest } from "@/app/api/books";
-import Input from "antd/es/input/Input";
 import { useEffect, useState } from "react";
-import TextArea from "antd/es/input/TextArea";
-import Modal from "antd/lib/modal/Modal";
+import { Input } from "./ui/input";
+import Modal from "antd/es/modal/Modal";
+
 
 interface Props {
   mode: Mode;
@@ -58,10 +58,9 @@ export const CreateUpdateBook = ({
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
         />
-        <TextArea
+        <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          autoSize={{ minRows: 3, maxRows: 3 }}
           placeholder="Description"
         />
         <Input
