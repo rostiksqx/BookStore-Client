@@ -19,6 +19,7 @@ const dm_serif_display = DM_Serif_Display({
 export const metadata: Metadata = {
   title: "Book Store",
   description: "A simple book store created with Next.js and ASP.NET Core",
+  icons: "favicon.svg",
 };
 
 export default function RootLayout({
@@ -28,6 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <body className={crimson_text.variable + ' ' + dm_serif_display.variable}>
         <main>
           {children}
