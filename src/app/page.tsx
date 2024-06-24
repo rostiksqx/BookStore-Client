@@ -2,6 +2,7 @@ import BookCard from "@/components/BookCard"
 import ExploreByCategory from "@/components/ExploreByCategory"
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
-            <img
+            <Image
               src="/placeholder.svg"
               width="550"
               height="700"
