@@ -1,9 +1,11 @@
-import { getAllBooks } from "@/api/books"
+"use client";
+
 import BookCard from "@/components/BookCard"
 import ExploreByCategory from "@/components/ExploreByCategory"
 import Image from "next/image"
 import Link from "next/link"
 import { useBooks } from "./book-provider"
+
 
 
 export default function Home() {
