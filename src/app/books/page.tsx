@@ -1,13 +1,13 @@
 import BookCard from "@/components/BookCard";
 
+
 export default function Books() {
+
     return (
         <>
-            <BookCard />
-            <BookCard />
-            <BookCard />
-            <BookCard />
-            <BookCard />
+            {/* {books.map((book) => (
+                <BookCard key={book.id} data={book} />
+            ))} */}
         </>
     );
 };

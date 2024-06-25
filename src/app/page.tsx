@@ -3,23 +3,11 @@ import BookCard from "@/components/BookCard"
 import ExploreByCategory from "@/components/ExploreByCategory"
 import Image from "next/image"
 import Link from "next/link"
-import { useContext, useEffect, useState } from "react"
-import { BookContext } from "./layout"
-
-
+import { useBooks } from "./book-provider"
 
 
 export default function Home() {
-  const { books, setBooks } = useContext(BookContext);
-
-  useEffect(() => {
-    const getBooks = async () => {
-      const dataBooks = await getAllBooks();
-      setBooks(dataBooks);
-    };
-
-    getBooks();
-  }, []);
+  const { books } = useBooks();
 
   return (
     <>
