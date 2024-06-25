@@ -3,7 +3,7 @@ import { Crimson_Text, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BookProvider from "./book-provider";
+import BookProvider from "../context/book-provider";
 
 
 const crimson_text = Crimson_Text({

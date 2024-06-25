@@ -4,8 +4,7 @@ import BookCard from "@/components/BookCard"
 import ExploreByCategory from "@/components/ExploreByCategory"
 import Image from "next/image"
 import Link from "next/link"
-import { useBooks } from "./book-provider"
-
+import { useBooks } from "../context/book-provider"
 
 
 export default function Home() {
