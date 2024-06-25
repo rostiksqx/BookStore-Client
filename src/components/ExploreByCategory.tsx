@@ -11,37 +11,37 @@ export default function ExploreByCategory() {
                     </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 py-12">
-                    <div className="flex flex-col items-center space-y-2">
+                    <div className="flex flex-col items-center space-y-2 cursor-pointer">
                         <div className="rounded-full bg-primary p-3">
                             <FigmaIcon className="h-6 w-6 text-primary-foreground" />
                         </div>
                         <h3 className="text-lg font-semibold">Fiction</h3>
                     </div>
-                    <div className="flex flex-col items-center space-y-2">
+                    <div className="flex flex-col items-center space-y-2 cursor-pointer">
                         <div className="rounded-full bg-secondary p-3">
                             <InfoIcon className="h-6 w-6 text-secondary-foreground" />
                         </div>
                         <h3 className="text-lg font-semibold">Nonfiction</h3>
                     </div>
-                    <div className="flex flex-col items-center space-y-2">
+                    <div className="flex flex-col items-center space-y-2 cursor-pointer">
                         <div className="rounded-full bg-accent p-3">
                             <PuzzleIcon className="h-6 w-6 text-accent-foreground" />
                         </div>
                         <h3 className="text-lg font-semibold">Mystery</h3>
                     </div>
-                    <div className="flex flex-col items-center space-y-2">
+                    <div className="flex flex-col items-center space-y-2 cursor-pointer">
                         <div className="rounded-full bg-success p-3">
                             <HeartCrackIcon className="h-6 w-6 text-success-foreground" />
                         </div>
                         <h3 className="text-lg font-semibold">Romance</h3>
                     </div>
-                    <div className="flex flex-col items-center space-y-2">
+                    <div className="flex flex-col items-center space-y-2 cursor-pointer">
                         <div className="rounded-full bg-warning p-3">
                             <FigmaIcon className="h-6 w-6 text-warning-foreground" />
                         </div>
                         <h3 className="text-lg font-semibold">Fantasy</h3>
                     </div>
-                    <div className="flex flex-col items-center space-y-2">
+                    <div className="flex flex-col items-center space-y-2 cursor-pointer">
                         <div className="rounded-full bg-error p-3">
                             <SpaceIcon className="h-6 w-6 text-error-foreground" />
                         </div>
