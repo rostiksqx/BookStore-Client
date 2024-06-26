@@ -2,25 +2,87 @@
 
 import BookCard from "@/components/BookCard";
 import { useBooks } from "../../context/book-provider";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 
 
 export default function Books() {
-    const { books } = useBooks();
+    const { books, categories } = useBooks();
 
     return (
-        <div className="container p-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <div className="space-y-2">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">All Books</h2>
-                    <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                        Browse our entire collection of books across all genres.
-                    </p>
+        <div className="container mx-auto py-8 px-4 md:px-6">
+            <div className="grid md:grid-cols-[240px_1fr] gap-8">
+                <div className="bg-background p-6 rounded-lg shadow">
+                    <h2 className="text-lg font-semibold mb-4">Filters</h2>
+                    <Accordion type="single" collapsible>
+                        <AccordionItem value="category">
+                            <AccordionTrigger className="text-base">Category</AccordionTrigger>
+                            <AccordionContent>
+                                <div className="grid gap-2">
+                                    {categories.map((category) => (
+                                        <Label key={category.id} className="flex items-center gap-2 font-normal">
+                                            <Checkbox id={`category-${category.id}`} /> {category.name}
+                                        </Label>
+                                    ))}
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                        <AccordionItem value="price">
+                            <AccordionTrigger className="text-base">Price</AccordionTrigger>
+                            <AccordionContent>
+                                <div className="grid gap-2">
+                                    <Label className="flex items-center gap-2 font-normal">
+                                        <Checkbox id="price-under-10" /> Under $10
+                                    </Label>
+                                    <Label className="flex items-center gap-2 font-normal">
+                                        <Checkbox id="price-10-20" /> $10 - $20
+                                    </Label>
+                                    <Label className="flex items-center gap-2 font-normal">
+                                        <Checkbox id="price-20-30" /> $20 - $30
+                                    </Label>
+                                    <Label className="flex items-center gap-2 font-normal">
+                                        <Checkbox id="price-over-30" /> Over $30
+                                    </Label>
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
                 </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 py-12">
-                {books.map((book) => (
-                    <BookCard key={book.id} data={book} />
-                ))}
+                <div>
+                    <div className="flex items-center mb-6">
+                        <h1 className="text-2xl font-bold">All Books</h1>
+                        <div className="ml-auto relative">
+                            <div className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <circle cx="11" cy="11" r="8" />
+                                    <path d="m21 21-4.3-4.3" />
+                                </svg>
+                            </div>
+                            <Input
+                                type="search"
+                                placeholder="Search by category"
+                                className="pl-8 rounded-md bg-background w-full max-w-[300px]"
+                            />
+                        </div>
+                    </div>
+                    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {books.map((book) => (
+                            <BookCard key={book.id} data={book} />
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );

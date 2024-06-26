@@ -1,6 +1,5 @@
 import fetcher from "./fetcher";
-
-const url = "http://127.0.0.1:8080/api"
+import { url } from "./constants";
 
 export const getAllBooks = async () => {
     const response = await fetcher({ url: `${url}/books` });
