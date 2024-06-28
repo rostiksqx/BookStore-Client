@@ -6,10 +6,31 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Category } from "@/types";
 
 
 export default function Books() {
     const { books, categories } = useBooks();
+    const [search, setSearch] = useState("");
+    const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
+
+
+    const handleCategoryChange = (categoryId: number) => {
+        setSelectedCategories(prevSelectedCategories =>
+            prevSelectedCategories.includes(categoryId)
+                ? prevSelectedCategories.filter(id => id !== categoryId)
+                : [...prevSelectedCategories, categoryId]
+        );
+        alert("Category changed");
+    };
+
+
+    const filteredBooks = books.filter((book) => {
+        const searchMatch = book.title.toLowerCase().includes(search.toLowerCase());
+        const categoryMatch = selectedCategories.length === 0 || book.categories.some(category => selectedCategories.includes(category.id));
+        return searchMatch && categoryMatch;
+    });
 
     return (
         <div className="container mx-auto py-8 px-4 md:px-6">
@@ -23,7 +44,9 @@ export default function Books() {
                                 <div className="grid gap-2">
                                     {categories.map((category) => (
                                         <Label key={category.id} className="flex items-center gap-2 font-normal">
-                                            <Checkbox id={`category-${category.id}`} /> {category.name}
+                                            <Checkbox id={`category-${category.id}`}
+                                                checked={selectedCategories.includes(category.id)}
+                                                onChange={() => handleCategoryChange(category.id)} /> {category.name}
                                         </Label>
                                     ))}
                                 </div>
@@ -72,13 +95,15 @@ export default function Books() {
                             </div>
                             <Input
                                 type="search"
-                                placeholder="Search by category"
+                                placeholder="Search books..."
                                 className="pl-8 rounded-md bg-background w-full max-w-[300px]"
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
                             />
                         </div>
                     </div>
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        {books.map((book) => (
+                        {filteredBooks.map((book) => (
                             <BookCard key={book.id} data={book} />
                         ))}
                     </div>
