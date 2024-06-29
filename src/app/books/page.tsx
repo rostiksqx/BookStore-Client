@@ -14,6 +14,7 @@ export default function Books() {
     const { books, categories } = useBooks();
     const [search, setSearch] = useState("");
     const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
+    const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
 
 
     const handleCategoryChange = (category: Category) => {
@@ -24,11 +25,18 @@ export default function Books() {
         });
     };
 
+    const handlePriceChange = (price: string) => {
+        setSelectedPrice((prevSelectedPrice) => {
+            return prevSelectedPrice === price ? null : price;
+        });
+    }
+
 
     const filteredBooks = books.filter((book) => {
         const searchMatch = book.title.toLowerCase().includes(search.toLowerCase());
         const categoryMatch = selectedCategories.length === 0 || selectedCategories.some(selectedCategory => book.categories.some(bookCategory => bookCategory.id === selectedCategory.id));
-        return searchMatch && categoryMatch;
+        const priceMatch = selectedPrice === null || (selectedPrice === "under-10" && book.price < 10) || (selectedPrice === "10-20" && book.price >= 10 && book.price < 20) || (selectedPrice === "20-30" && book.price >= 20 && book.price < 30) || (selectedPrice === "over-30" && book.price >= 30);
+        return searchMatch && categoryMatch && priceMatch;
     });
 
     return (
@@ -56,16 +64,28 @@ export default function Books() {
                             <AccordionContent>
                                 <div className="grid gap-2">
                                     <Label className="flex items-center gap-2 font-normal">
-                                        <Checkbox id="price-under-10" /> Under $10
+                                        <Checkbox id="price-under-10"
+                                            checked={selectedPrice === "under-10"}
+                                            onCheckedChange={() => handlePriceChange("under-10")}
+                                        /> Under $10
                                     </Label>
                                     <Label className="flex items-center gap-2 font-normal">
-                                        <Checkbox id="price-10-20" /> $10 - $20
+                                        <Checkbox id="price-10-20"
+                                            checked={selectedPrice === "10-20"}
+                                            onCheckedChange={() => handlePriceChange("10-20")}
+                                        /> $10 - $20
                                     </Label>
                                     <Label className="flex items-center gap-2 font-normal">
-                                        <Checkbox id="price-20-30" /> $20 - $30
+                                        <Checkbox id="price-20-30"
+                                            checked={selectedPrice === "20-30"}
+                                            onCheckedChange={() => handlePriceChange("20-30")}
+                                        /> $20 - $30
                                     </Label>
                                     <Label className="flex items-center gap-2 font-normal">
-                                        <Checkbox id="price-over-30" /> Over $30
+                                        <Checkbox id="price-over-30"
+                                            checked={selectedPrice === "over-30"}
+                                            onCheckedChange={() => handlePriceChange("over-30")}
+                                        /> Over $30
                                     </Label>
                                 </div>
                             </AccordionContent>
