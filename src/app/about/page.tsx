@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 
 export default function About() {
     return (
@@ -6,21 +6,17 @@ export default function About() {
             <section className="bg-muted py-12 md:py-24">
                 <div className="container grid md:grid-cols-2 gap-8 items-center">
                     <div>
-                        <h2 className="text-3xl font-bold mb-4">About Bookworm's Haven</h2>
+                        <h2 className="text-3xl font-bold mb-4">About Book Store</h2>
                         <p className="text-muted-foreground mb-6">
-                            Bookworm's Haven is a beloved independent bookstore that has been serving the community for over 20
+                            Book Store is a beloved independent bookstore that has been serving the community for over 20
                             years. Founded by a passionate team of book lovers, our mission is to curate a diverse selection of
                             literature, foster a love of reading, and provide a cozy and welcoming space for our customers.
                         </p>
-                        <Link href="#" className="inline-flex items-center space-x-2" prefetch={false}>
-                            <span>Learn More</span>
-                            <ChevronRightIcon className="h-5 w-5" />
-                        </Link>
                     </div>
-                    <img
-                        src="/placeholder.svg"
-                        width={400}
-                        height={400}
+                    <Image
+                        src="/bookstore.webp"
+                        width="400"
+                        height="700"
                         alt="Bookworm's Haven"
                         className="mx-auto rounded-lg"
                     />
@@ -59,11 +55,11 @@ export default function About() {
             </section>
             <section className="bg-muted py-12 md:py-24">
                 <div className="container">
-                    <h2 className="text-3xl font-bold mb-8 text-center">Visit Us</h2>
+                    <h2 className="text-3xl font-bold mb-12 text-center">Visit Us</h2>
                     <div className="grid md:grid-cols-2 gap-8">
                         <div>
                             <h3 className="text-xl font-bold mb-4">Location</h3>
-                            <p className="text-muted-foreground mb-6">123 Main Street, Anytown USA 12345</p>
+                            <p className="text-muted-foreground mb-6">1107 Pearl St, Boulder USA 80302</p>
                             <h3 className="text-xl font-bold mb-4">Hours</h3>
                             <p className="text-muted-foreground mb-6">
                                 Monday - Saturday: 10am - 8pm
@@ -78,11 +74,11 @@ export default function About() {
                             </p>
                         </div>
                         <div>
-                            <img
-                                src="/placeholder.svg"
-                                width={600}
-                                height={400}
-                                alt="Bookworm's Haven Storefront"
+                            <Image
+                                src="/address.png"
+                                width="600"
+                                height="400"
+                                alt="Book Store Storefront"
                                 className="rounded-lg"
                             />
                         </div>
@@ -93,7 +89,7 @@ export default function About() {
     );
 };
 
-function BookIcon(props) {
+function BookIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}
@@ -112,27 +108,8 @@ function BookIcon(props) {
     )
 }
 
-function ChevronRightIcon(props) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <path d="m9 18 6-6-6-6" />
-        </svg>
-    )
-}
 
-
-function SofaIcon(props) {
+function SofaIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}
@@ -156,7 +133,7 @@ function SofaIcon(props) {
 }
 
 
-function UserIcon(props) {
+function UserIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg
             {...props}

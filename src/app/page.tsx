@@ -16,10 +16,10 @@ export default function Home() {
         <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
           <Image
             src="/bookstore.webp"
-            width="550"
-            height="700"
+            width="400"
+            height="500"
             alt="Hero Book"
-            className="mx-auto aspect-[2/3] overflow-hidden rounded-xl object-cover object-center sm:w-full"
+            className="mx-auto rounded-xl object-cover object-center sm:w-full"
           />
           <div className="space-y-4">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
