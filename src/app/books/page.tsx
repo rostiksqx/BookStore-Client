@@ -13,22 +13,21 @@ import { Category } from "@/types";
 export default function Books() {
     const { books, categories } = useBooks();
     const [search, setSearch] = useState("");
-    const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
+    const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
 
 
-    const handleCategoryChange = (categoryId: number) => {
-        setSelectedCategories(prevSelectedCategories =>
-            prevSelectedCategories.includes(categoryId)
-                ? prevSelectedCategories.filter(id => id !== categoryId)
-                : [...prevSelectedCategories, categoryId]
-        );
-        alert("Category changed");
+    const handleCategoryChange = (category: Category) => {
+        setSelectedCategories((prevSelectedCategories) => {
+            return prevSelectedCategories.includes(category)
+                ? prevSelectedCategories.filter((selectedCategory) => selectedCategory !== category)
+                : [...prevSelectedCategories, category];
+        });
     };
 
 
     const filteredBooks = books.filter((book) => {
         const searchMatch = book.title.toLowerCase().includes(search.toLowerCase());
-        const categoryMatch = selectedCategories.length === 0 || book.categories.some(category => selectedCategories.includes(category.id));
+        const categoryMatch = selectedCategories.length === 0 || selectedCategories.some(selectedCategory => book.categories.some(bookCategory => bookCategory.id === selectedCategory.id));
         return searchMatch && categoryMatch;
     });
 
@@ -45,8 +44,8 @@ export default function Books() {
                                     {categories.map((category) => (
                                         <Label key={category.id} className="flex items-center gap-2 font-normal">
                                             <Checkbox id={`category-${category.id}`}
-                                                checked={selectedCategories.includes(category.id)}
-                                                onChange={() => handleCategoryChange(category.id)} /> {category.name}
+                                                checked={selectedCategories.includes(category)}
+                                                onCheckedChange={() => handleCategoryChange(category)} /> {category.name}
                                         </Label>
                                     ))}
                                 </div>
