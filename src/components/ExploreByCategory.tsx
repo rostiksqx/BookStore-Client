@@ -1,4 +1,6 @@
 import { useBooks } from "@/context/book-provider";
+import Link from "next/link";
+import React from "react";
 
 export default function ExploreByCategory() {
     const { categories } = useBooks();
@@ -14,14 +16,38 @@ export default function ExploreByCategory() {
                         </p>
                     </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 py-12">
-                    {categories.slice(0, 5).map((category) => (
-                        <div key={category.id} className="flex flex-col items-center space-y-2 cursor-pointer hover:-translate-y-4 transition-transform duration-300">
-                            <h3 className="text-xl font-semibold">{category.name}</h3>
-                        </div>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-5">
+                    {categories.map((category) => (
+                        <Link
+                            href="#"
+                            className="group flex flex-col items-center justify-center gap-2 rounded-lg bg-card p-6 text-center hover:bg-gray-200 transition-colors ease-in-out duration-300"
+                            prefetch={false}
+                        >
+                            <BookIcon className="h-8 w-8" />
+                            <h3 className="text-lg font-semibold">{category.name}</h3>
+                        </Link>
                     ))}
                 </div>
             </div>
         </section>
     );
+}
+
+function BookIcon(props: React.SVGProps<SVGSVGElement>) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+        </svg>
+    )
 }

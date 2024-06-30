@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 
 export default function BookCard({ data }: { data: Book }) {
     return (
-        <Card>
+        <Card className="hover:-translate-y-4 transition-transform ease-in-out duration-300">
             <Link href="#" prefetch={false}>
                 <Image
                     src={`data:image/jpeg;base64,${data.image}`}
