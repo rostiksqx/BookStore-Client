@@ -5,10 +5,11 @@ import ExploreByCategory from "@/components/ExploreByCategory"
 import Image from "next/image"
 import Link from "next/link"
 import { useBooks } from "../context/book-provider"
+import BookSkeleton from "@/components/BookSkeleton";
 
 
 export default function Home() {
-  const { books } = useBooks();
+  const { books, loading } = useBooks();
 
   return (
     <>
@@ -50,9 +51,10 @@ export default function Home() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 py-12">
-            {books.slice(0, 5).map((book) => (
-              <BookCard key={book.id} data={book} />
-            ))}
+            {loading
+              ? [...Array(5)].map((_, index) => <BookSkeleton key={index} />)
+              : books.slice(0, 5).map((book) => <BookCard key={book.id} data={book} />)
+            }
           </div>
         </div>
       </section>

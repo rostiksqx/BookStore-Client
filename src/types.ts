@@ -17,4 +17,5 @@ export type BookContextType = {
     setBooks: (books: Book[]) => void;
     categories: Category[];
     setCategories: (categories: Category[]) => void;
+    loading: boolean;
 };

@@ -9,18 +9,17 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Category } from "@/types";
 import { useSearchParams } from "next/navigation";
+import BookSkeleton from "@/components/BookSkeleton";
 
 
 export default function Books() {
-    const { books, categories } = useBooks();
+    const { books, categories, loading } = useBooks();
     const [search, setSearch] = useState("");
     const searchParams = useSearchParams();
     const categoryName = searchParams.get("category");
     const category = categories.find((category) => category.name === categoryName);
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(category ? [category] : []);
     const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
-
-
 
 
     const handleCategoryChange = (category: Category) => {
@@ -102,7 +101,7 @@ export default function Books() {
                     <div className="flex items-center mb-6">
                         <h1 className="text-2xl font-bold">All Books</h1>
                         <div className="ml-auto relative">
-                            <div className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground">
+                            <div className="absolute left-1.5 top-2 h-4 w-4 text-muted-foreground">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
@@ -128,9 +127,10 @@ export default function Books() {
                         </div>
                     </div>
                     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        {filteredBooks.map((book) => (
-                            <BookCard key={book.id} data={book} />
-                        ))}
+                        {loading
+                            ? [...Array(8)].map((_, index) => <BookSkeleton key={index} />)
+                            : filteredBooks.map((book) => <BookCard key={book.id} data={book} />)
+                        }
                     </div>
                 </div>
             </div>

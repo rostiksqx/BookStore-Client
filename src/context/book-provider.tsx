@@ -6,7 +6,7 @@ import { BookContextType } from "@/types";
 import React from "react";
 
 
-export const BookContext = React.createContext<BookContextType>({ books: [], setBooks: () => { }, categories: [], setCategories: () => { } });
+export const BookContext = React.createContext<BookContextType>({ books: [], setBooks: () => { }, categories: [], setCategories: () => { }, loading: false });
 
 
 export default function BookProvider({
@@ -16,10 +16,13 @@ export default function BookProvider({
 }>) {
     const [books, setBooks] = React.useState<BookContextType["books"]>([]);
     const [categories, setCategories] = React.useState<BookContextType["categories"]>([]);
+    const [loading, setLoading] = React.useState(false);
 
     React.useEffect(() => {
+        setLoading(true);
         getAllBooks().then((data) => {
             setBooks(data);
+            setLoading(false);
         });
 
         getAllCategories().then((data) => {
@@ -28,7 +31,7 @@ export default function BookProvider({
     }, []);
 
     return (
-        <BookContext.Provider value={{ books, setBooks, categories, setCategories }}>
+        <BookContext.Provider value={{ books, setBooks, categories, setCategories, loading }}>
             {children}
         </BookContext.Provider>
     );
