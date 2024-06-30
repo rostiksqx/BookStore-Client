@@ -8,13 +8,19 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Category } from "@/types";
+import { useSearchParams } from "next/navigation";
 
 
 export default function Books() {
     const { books, categories } = useBooks();
     const [search, setSearch] = useState("");
-    const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
+    const searchParams = useSearchParams();
+    const categoryName = searchParams.get("category");
+    const category = categories.find((category) => category.name === categoryName);
+    const [selectedCategories, setSelectedCategories] = useState<Category[]>(category ? [category] : []);
     const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
+
+
 
 
     const handleCategoryChange = (category: Category) => {

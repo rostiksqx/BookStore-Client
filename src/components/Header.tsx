@@ -8,11 +8,8 @@ export default function Header() {
                 <span className="ml-2 text-lg font-semibold">Bookstore</span>
             </Link>
             <nav className="ml-auto flex gap-4 sm:gap-6">
-                <Link href="/books" className="text-base font-medium hover:underline underline-offset-4" prefetch={false}>
+                <Link href="/books" className="text-base font-medium hover:underline underline-offset-4">
                     Books
-                </Link>
-                <Link href="/categories" className="text-base font-medium hover:underline underline-offset-4" prefetch={false}>
-                    Categories
                 </Link>
                 <Link href="/about" className="text-base font-medium hover:underline underline-offset-4" prefetch={false}>
                     About

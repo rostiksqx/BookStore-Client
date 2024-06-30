@@ -70,7 +70,7 @@ export default function About() {
                             <p className="text-muted-foreground mb-6">
                                 Phone: (123) 456-7890
                                 <br />
-                                Email: info@bookwormshaven.com
+                                Email: info@bookstore.com
                             </p>
                         </div>
                         <div>

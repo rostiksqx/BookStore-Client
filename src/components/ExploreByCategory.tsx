@@ -19,7 +19,7 @@ export default function ExploreByCategory() {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-5">
                     {categories.map((category) => (
                         <Link
-                            href="#"
+                            href={`/books?category=${category.name}`}
                             className="group flex flex-col items-center justify-center gap-2 rounded-lg bg-card p-6 text-center hover:bg-gray-200 transition-colors ease-in-out duration-300"
                             prefetch={false}
                         >
