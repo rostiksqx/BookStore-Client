@@ -14,7 +14,7 @@ export default function Header() {
                 <Link href="/about" className="text-base font-medium hover:underline underline-offset-4" prefetch={false}>
                     About
                 </Link>
-                <Link href="/contacts" className="text-base font-medium hover:underline underline-offset-4" prefetch={false}>
+                <Link href="/contact-us" className="text-base font-medium hover:underline underline-offset-4" prefetch={false}>
                     Contact Us
                 </Link>
             </nav>
