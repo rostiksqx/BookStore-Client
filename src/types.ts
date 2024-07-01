@@ -19,3 +19,9 @@ export type BookContextType = {
     setCategories: (categories: Category[]) => void;
     loading: boolean;
 };
+
+export type FormData = {
+    name: string;
+    email: string;
+    message: string;
+};
