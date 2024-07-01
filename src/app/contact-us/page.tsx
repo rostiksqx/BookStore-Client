@@ -72,7 +72,7 @@ export default function ContactsPage({ searchParams }: { searchParams: searchPar
                         <Textarea id="message" name="message" placeholder="Enter your message" required />
                     </div>
                     <div className="text-center">
-                        <span className="text-red-600 font-medium">{searchParams.error.replace(/-/g, ' ')}</span>
+                        <span className="text-red-600 font-medium">{searchParams.error ? searchParams.error.replace(/-/g, ' ') : ""}</span>
                     </div>
                     <Button type="submit" className="w-full hover:bg-black/70 transition-colors ease-in-out duration-300">
                         Submit
