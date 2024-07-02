@@ -3,6 +3,8 @@ export type Book = {
     title: string;
     description: string;
     price: number;
+    author: string;
+    publishedDate: string;
     categories: Category[];
     image: string;
 };

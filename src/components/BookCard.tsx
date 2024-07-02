@@ -20,7 +20,7 @@ export default function BookCard({ data }: { data: Book }) {
                 <Link href={"/books/" + data.title.replace(/ /g, "-")} prefetch={false}>
                     <h3 className="text-lg font-semibold">{data.title}</h3>
                 </Link>
-                <p className="text-muted-foreground text-sm">{data.description}</p>
+                <p className="text-sm truncate-3-lines">{data.description}</p>
                 <div className="flex items-center justify-between mt-4">
                     <p className="text-lg font-semibold">${data.price}</p>
                     <Button variant="outline" size="sm">

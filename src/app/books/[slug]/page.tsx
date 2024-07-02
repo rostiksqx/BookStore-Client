@@ -15,7 +15,7 @@ export default function Book({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-10 md:py-18 lg:py-28">
             <div className="container grid gap-6 px-4 md:px-6">
                 <div className="space-y-2">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{book.title}</h2>
@@ -37,9 +37,7 @@ export default function Book({ params }: { params: { slug: string } }) {
                         <div className="grid gap-2">
                             <h3 className="text-xl font-semibold">About the Book</h3>
                             <p className="text-muted-foreground">
-                                The Alchemist follows the journey of a young shepherd named Santiago who travels from his homeland
-                                in Spain to the Egyptian desert in search of a treasure buried near the Pyramids. The story is an
-                                inspiring tale of self-discovery and the importance of following one's dreams.
+                                {book.description}
                             </p>
                         </div>
                         <div className="grid gap-2">
@@ -47,15 +45,15 @@ export default function Book({ params }: { params: { slug: string } }) {
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <p className="font-bold">Author</p>
-                                    <p>Paulo Coelho</p>
+                                    <p>{book.author}</p>
                                 </div>
                                 <div>
                                     <p className="font-bold">Genre</p>
-                                    <p>{book.categories.map((category) => (category.name))}</p>
+                                    <p>{book.categories.map((category) => (category.name)).join(", ")}</p>
                                 </div>
                                 <div>
                                     <p className="font-bold">Publication Date</p>
-                                    <p>April 25, 1988</p>
+                                    <p>{new Date(book.publishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                                 </div>
                             </div>
                         </div>

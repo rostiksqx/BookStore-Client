@@ -22,7 +22,7 @@ export default function ExploreByCategory() {
                         ? [...Array(8)].map((_, index) => (<CategorySkeleton key={index} />))
                         : categories.map((category) => (
                             <Link
-                                href={`/books?category=${category.name}`}
+                                href={`/books?category=${category.name.replace(/ /g, "-")}`}
                                 className="group flex flex-col items-center justify-center gap-2 rounded-lg bg-card p-6 text-center hover:bg-gray-200 transition-colors ease-in-out duration-300"
                                 prefetch={false}
                             >
@@ -32,7 +32,7 @@ export default function ExploreByCategory() {
                         ))}
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
 

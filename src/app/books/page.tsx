@@ -17,7 +17,7 @@ export default function Books() {
     const [search, setSearch] = useState("");
     const searchParams = useSearchParams();
     const categoryName = searchParams.get("category");
-    const category = categories.find((category) => category.name === categoryName);
+    const category = categories.find((category) => category.name === categoryName?.replace(/-/g, " "));
     const [selectedCategories, setSelectedCategories] = useState<Category[]>(category ? [category] : []);
     const [selectedPrice, setSelectedPrice] = useState<string | null>(null);
 
