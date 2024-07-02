@@ -6,13 +6,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Category } from "@/types";
 import { useSearchParams } from "next/navigation";
 import BookSkeleton from "@/components/BookSkeleton";
 
 
-export default function Books() {
+function Books() {
     const { books, categories, loading } = useBooks();
     const [search, setSearch] = useState("");
     const searchParams = useSearchParams();
@@ -137,3 +137,11 @@ export default function Books() {
         </div>
     );
 };
+
+export default function BooksSuspense() {
+    return (
+        <Suspense fallback={<BookSkeleton />}>
+            <Books />
+        </Suspense>
+    )
+}
