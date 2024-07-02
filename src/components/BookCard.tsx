@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 export default function BookCard({ data }: { data: Book }) {
     return (
         <Card className="hover:-translate-y-4 transition-transform ease-in-out duration-300">
-            <Link href="#" prefetch={false}>
+            <Link href={"/books/" + data.title.replace(/ /g, "-")} prefetch={false}>
                 <Image
                     src={`data:image/jpeg;base64,${data.image}`}
                     width={300}
@@ -17,7 +17,7 @@ export default function BookCard({ data }: { data: Book }) {
                 />
             </Link>
             <CardContent className="p-4">
-                <Link href="#" prefetch={false}>
+                <Link href={"/books/" + data.title.replace(/ /g, "-")} prefetch={false}>
                     <h3 className="text-lg font-semibold">{data.title}</h3>
                 </Link>
                 <p className="text-muted-foreground text-sm">{data.description}</p>
@@ -28,6 +28,6 @@ export default function BookCard({ data }: { data: Book }) {
                     </Button>
                 </div>
             </CardContent>
-        </Card>
+        </Card >
     );
 }
