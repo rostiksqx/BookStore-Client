@@ -25,3 +25,7 @@ export type FormData = {
     email: string;
     message: string;
 };
+
+export type searchParams = {
+    error: string;
+};

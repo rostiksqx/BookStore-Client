@@ -1,9 +1,10 @@
 import { useBooks } from "@/context/book-provider";
 import Link from "next/link";
 import React from "react";
+import CategorySkeleton from "./CategorySkeleton";
 
 export default function ExploreByCategory() {
-    const { categories } = useBooks();
+    const { categories, loading } = useBooks();
 
     return (
         <section className="w-full py-12 md:py-24 lg:py-32">
@@ -17,16 +18,18 @@ export default function ExploreByCategory() {
                     </div>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-5">
-                    {categories.map((category) => (
-                        <Link
-                            href={`/books?category=${category.name}`}
-                            className="group flex flex-col items-center justify-center gap-2 rounded-lg bg-card p-6 text-center hover:bg-gray-200 transition-colors ease-in-out duration-300"
-                            prefetch={false}
-                        >
-                            <BookIcon className="h-8 w-8" />
-                            <h3 className="text-lg font-semibold">{category.name}</h3>
-                        </Link>
-                    ))}
+                    {loading
+                        ? [...Array(8)].map((_, index) => (<CategorySkeleton key={index} />))
+                        : categories.map((category) => (
+                            <Link
+                                href={`/books?category=${category.name}`}
+                                className="group flex flex-col items-center justify-center gap-2 rounded-lg bg-card p-6 text-center hover:bg-gray-200 transition-colors ease-in-out duration-300"
+                                prefetch={false}
+                            >
+                                <BookIcon className="h-8 w-8" />
+                                <h3 className="text-lg font-semibold">{category.name}</h3>
+                            </Link>
+                        ))}
                 </div>
             </div>
         </section>

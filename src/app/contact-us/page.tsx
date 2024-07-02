@@ -5,10 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Resend } from 'resend'
 import { KEY, OWNER_EMAIL, contactUsHeaderId, errorSearchParameterName } from "@/api/constants";
 import { redirect } from "next/navigation";
-
-type searchParams = {
-    error: string;
-};
+import { searchParams } from "@/types";
 
 
 export default function ContactsPage({ searchParams }: { searchParams: searchParams }) {

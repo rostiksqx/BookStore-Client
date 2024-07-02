@@ -22,12 +22,12 @@ export default function BookProvider({
         setLoading(true);
         getAllBooks().then((data) => {
             setBooks(data);
-            setLoading(false);
         });
 
         getAllCategories().then((data) => {
             setCategories(data);
         });
+        setLoading(false);
     }, []);
 
     return (

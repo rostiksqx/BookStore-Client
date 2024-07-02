@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Header() {
     return (
         <header className="px-4 lg:px-6 h-14 flex items-center bg-background">
-            <Link href="/" className="flex items-center justify-center" prefetch={false}>
+            <Link href="/" className="flex items-center justify-center" >
                 <BookIcon className="h-6 w-6 text-primary" />
                 <span className="ml-2 text-lg font-semibold">Bookstore</span>
             </Link>
@@ -11,10 +11,10 @@ export default function Header() {
                 <Link href="/books" className="text-base font-medium hover:underline underline-offset-4" prefetch={false}>
                     Books
                 </Link>
-                <Link href="/about" className="text-base font-medium hover:underline underline-offset-4" prefetch={false}>
+                <Link href="/about" className="text-base font-medium hover:underline underline-offset-4" >
                     About
                 </Link>
-                <Link href="/contact-us" className="text-base font-medium hover:underline underline-offset-4" prefetch={false}>
+                <Link href="/contact-us" className="text-base font-medium hover:underline underline-offset-4" >
                     Contact Us
                 </Link>
             </nav>
