@@ -3,12 +3,13 @@
 import NotFound from "@/app/not-found";
 import { Button } from "@/components/ui/button";
 import { useBooks } from "@/context/book-provider";
+import { titleToSlug } from "@/lib/utils";
 import Image from "next/image";
 
 
 export default function Book({ params }: { params: { slug: string } }) {
     const { books } = useBooks();
-    const book = books.find(book => book.title === params.slug.replace(/-/g, ' '));
+    const book = books.find(book => titleToSlug(book.title) === titleToSlug(params.slug || ''));
 
     if (!book) {
         return <NotFound />;
