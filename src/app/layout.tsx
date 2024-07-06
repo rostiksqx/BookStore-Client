@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookProvider from "../context/book-provider";
-import Head from "next/head";
 
 
 const crimson_text = Crimson_Text({
@@ -57,23 +56,21 @@ export const metadata: Metadata = {
   ],
   generator: "Book Store",
   metadataBase: new URL("https://book-store-rostik.netlify.app"),
-  alternates: { canonical: "./", },
+  alternates: { canonical: "./" },
 };
 
 function generateSchemaJSONLD() {
   const schema = {
-    __html: {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Book Store",
-      url: "https://book-store-rostik.netlify.app",
-      logo: "https://book-store-rostik.netlify.app/favicon.svg",
-      description: "A book store where you can find your favorite books and buy them online.",
-      location: {
-        "@type": "VirtualLocation",
-        url: "https://book-store-rostik.netlify.app/contact-us",
-        description: "Contact us for more information about our book store."
-      }
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Book Store",
+    url: "https://book-store-rostik.netlify.app",
+    logo: "https://book-store-rostik.netlify.app/favicon.svg",
+    description: "A book store where you can find your favorite books and buy them online.",
+    location: {
+      "@type": "VirtualLocation",
+      url: "https://book-store-rostik.netlify.app/contact-us",
+      description: "Contact us for more information about our book store."
     }
   }
 
@@ -88,7 +85,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <Head>
+      <head>
         <link rel="sitemap" href="/sitemap-index.xml" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -97,9 +94,8 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: generateSchemaJSONLD() }}
-          key="jsonld"
         />
-      </Head>
+      </head>
       <body className={crimson_text.variable + ' ' + dm_serif_display.variable}>
         <BookProvider>
           <div className="flex flex-col min-h-[100dvh]">
@@ -111,6 +107,6 @@ export default function RootLayout({
           </div>
         </BookProvider>
       </body>
-    </html>
+    </html >
   );
 };
