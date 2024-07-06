@@ -60,21 +60,25 @@ export const metadata: Metadata = {
   alternates: { canonical: "./", },
 };
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Book Store",
-  url: "https://book-store-rostik.netlify.app",
-  logo: "https://book-store-rostik.netlify.app/favicon.svg",
-  description: "A book store where you can find your favorite books and buy them online.",
-  sameAs: [
-    "https://www.linkedin.com/in/book-store",
-    "https://twitter.com/bookstoreshop"
-  ],
-  location: {
-    "@type": "VirtualLocation",
-    url: "https://book-store-rostik.netlify.app/contact-us",
-    description: "Contact us for more information about our book store."
+function schema() {
+  return {
+    __html: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Book Store",
+      url: "https://book-store-rostik.netlify.app",
+      logo: "https://book-store-rostik.netlify.app/favicon.svg",
+      description: "A book store where you can find your favorite books and buy them online.",
+      sameAs: [
+        "https://www.linkedin.com/in/book-store",
+        "https://twitter.com/bookstoreshop"
+      ],
+      location: {
+        "@type": "VirtualLocation",
+        url: "https://book-store-rostik.netlify.app/contact-us",
+        description: "Contact us for more information about our book store."
+      }
+    }
   }
 };
 
@@ -94,7 +98,8 @@ export default function RootLayout({
         <meta property="og:image:type" content="image/png" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={schema()}
+          key="jsonld"
         />
       </Head>
       <body className={crimson_text.variable + ' ' + dm_serif_display.variable}>
