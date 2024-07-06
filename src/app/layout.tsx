@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description: "A book store where you can find your favorite books and buy them online.",
     site: "https://twitter.com/bookstoreshop",
     creator: "https://twitter.com/bookstoreshop",
-    images: ["https://book-store-rostik.netlify.app/bookstore.webp"],
+    images: "https://book-store-rostik.netlify.app/bookstore.webp",
   },
   keywords: [
     "book store",
@@ -56,6 +56,8 @@ export const metadata: Metadata = {
     "bookshop near me"
   ],
   generator: "Book Store",
+  metadataBase: new URL("https://book-store-rostik.netlify.app"),
+  alternates: { canonical: "./", },
 };
 
 const schema = {
@@ -85,7 +87,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link rel="canonical" href="https://book-store-rostik.netlify.app" />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
