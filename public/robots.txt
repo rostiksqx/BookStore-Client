@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+Sitemap: https://book-store-rostik.netlify.app/sitemap-index.html
