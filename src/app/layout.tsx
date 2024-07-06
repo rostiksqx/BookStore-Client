@@ -60,8 +60,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "./", },
 };
 
-function schema() {
-  return {
+function generateSchemaJSONLD() {
+  const schema = {
     __html: {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -69,10 +69,6 @@ function schema() {
       url: "https://book-store-rostik.netlify.app",
       logo: "https://book-store-rostik.netlify.app/favicon.svg",
       description: "A book store where you can find your favorite books and buy them online.",
-      sameAs: [
-        "https://www.linkedin.com/in/book-store",
-        "https://twitter.com/bookstoreshop"
-      ],
       location: {
         "@type": "VirtualLocation",
         url: "https://book-store-rostik.netlify.app/contact-us",
@@ -80,6 +76,8 @@ function schema() {
       }
     }
   }
+
+  return JSON.stringify(schema);
 };
 
 export default function RootLayout({
@@ -98,7 +96,7 @@ export default function RootLayout({
         <meta property="og:image:type" content="image/png" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={schema()}
+          dangerouslySetInnerHTML={{ __html: generateSchemaJSONLD() }}
           key="jsonld"
         />
       </Head>
