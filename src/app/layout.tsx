@@ -63,18 +63,18 @@ export const metadata: Metadata = {
 const schema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Book Store",
-  "url": "https://book-store-rostik.netlify.app",
-  "logo": "https://book-store-rostik.netlify.app/favicon.svg",
-  "description": "A book store where you can find your favorite books and buy them online.",
-  "sameAs": [
+  name: "Book Store",
+  url: "https://book-store-rostik.netlify.app",
+  logo: "https://book-store-rostik.netlify.app/favicon.svg",
+  description: "A book store where you can find your favorite books and buy them online.",
+  sameAs: [
     "https://www.linkedin.com/in/book-store",
     "https://twitter.com/bookstoreshop"
   ],
-  "location": {
+  location: {
     "@type": "VirtualLocation",
-    "url": "https://book-store-rostik.netlify.app/contact-us",
-    "description": "Contact us for more information about our book store."
+    url: "https://book-store-rostik.netlify.app/contact-us",
+    description: "Contact us for more information about our book store."
   }
 };
 
